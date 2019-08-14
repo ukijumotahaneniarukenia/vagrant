@@ -1,0 +1,1 @@
+virsh dumpxml vx_node@ | grep "mac address" | awk 'match($0, /[a-f0-9]{2}(:[a-f0-9]{2}){5}/) {print substr($0, RSTART, RLENGTH)}'

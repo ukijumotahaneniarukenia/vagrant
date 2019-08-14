@@ -1,0 +1,6 @@
+0 /etc/libvirt/qemu/vx_node1.xml
+0 /etc/libvirt/qemu/vx_node2.xml
+1 /etc/libvirt/qemu/vx_node3.xml
+1 /etc/libvirt/qemu/vx_node4.xml
+2 /etc/libvirt/qemu/vx_node5.xml
+2 /etc/libvirt/qemu/vx_node6.xml
