@@ -9,10 +9,12 @@
 rootユーザーで実行
 
 ```
+$cd /opt
 $curl -LO https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.rpm
 $rpm -ivh vagrant_2.2.7_x86_64.rpm
 ```
 
+バージョン確認
 ```
 $vagrant --version
 Vagrant 2.2.7
@@ -20,9 +22,12 @@ Vagrant 2.2.7
 
 # ホストマシンにvisual-boxをインストール
 
+rootユーザーで実行
+
 ```
 $yum install -y libvpx libvpx-devel libvpx-utils
 $yum install -y kernel-devel kernel-devel-3.10.0-1062.el7.x86_64
+$cd /opt
 $curl -LO https://download.virtualbox.org/virtualbox/6.1.2/VirtualBox-6.1-6.1.2_135662_el7-1.x86_64.rpm
 $rpm -ivh VirtualBox-6.1-6.1.2_135662_el7-1.x86_64.rpm
 ```
@@ -31,16 +36,13 @@ $rpm -ivh VirtualBox-6.1-6.1.2_135662_el7-1.x86_64.rpm
 
 - https://app.vagrantup.com/archlinux/boxes/archlinux
 
-```
+
+以下から検索条件を指定してisoイメージを取得する
+
+- https://app.vagrantup.com/boxes/search
 
 ```
 
-# てばっぐ
-
-- https://qiita.com/shuu1222/items/7a6d04172363be44025c
-```
-aine@centos ~/vagrant$vi /opt/vagrant/embedded/gems/2.2.7/gems/vagrant-2.2.7/plugins/providers/virtualbox/driver/meta.rb
-aine@centos ~/vagrant$vi /opt/vagrant/embedded/gems/2.2.7/gems/vagrant-2.2.7/plugins/providers/virtualbox/plugin.rb
 ```
 
 
@@ -61,6 +63,7 @@ $vagrant up
 <details><summary>開く</summary><div>
 
 ```
+$vagrant up
 Bringing machine 'default' up with 'virtualbox' provider...
 ==> default: Box 'archlinux/archlinux' could not be found. Attempting to find and install...
     default: Box Provider: virtualbox
