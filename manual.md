@@ -52,13 +52,17 @@ $rpm -ivh VirtualBox-6.1-6.1.2_135662_el7-1.x86_64.rpm
 ```
 ```
 
-# 仮想マシンの起動
+
+
+# 仮想マシンの作成
 
 ホストマシンで以下のコマンドを実行
 
 ```
 $vagrant up
 ```
+
+デフォルトの名前はdefalutらしいので、名前管理したほうがよさげ。
 
 <details><summary>開く</summary><div>
 
@@ -115,3 +119,100 @@ or on a per folder basis within the Vagrantfile:
     default: /vagrant => /home/aine/vagrant
 ```
 </div></details>
+
+# isoファイルの確認
+
+```
+$find / -name "*iso*" 2>/dev/null | grep vagrant | grep boxes
+/home/aine/.vagrant.d/boxes/archlinux-VAGRANTSLASH-archlinux/2020.01.03/virtualbox/packer-virtualbox-iso-1578064342-disk001.vmdk
+$ls -lh /home/aine/.vagrant.d/boxes/archlinux-VAGRANTSLASH-archlinux/2020.01.03/virtualbox/packer-virtualbox-iso-1578064342-disk001.vmdk
+-rw-r--r--. 1 aine aine 567M  1月 31 00:21 /home/aine/.vagrant.d/boxes/archlinux-VAGRANTSLASH-archlinux/2020.01.03/virtualbox/packer-virtualbox-iso-1578064342-disk001.vmdk
+```
+
+
+# 仮想マシンの一覧取得
+
+```
+$vagrant box list
+archlinux/archlinux (virtualbox, 2020.01.03)
+```
+
+# 仮想マシンの状態確認
+
+```
+$vagrant status
+Current machine states:
+
+default                   running (virtualbox)
+
+The VM is running. To stop this VM, you can run `vagrant halt` to
+shut it down forcefully, or you can run `vagrant suspend` to simply
+suspend the virtual machine. In either case, to restart it again,
+simply run `vagrant up`.
+```
+
+# SSH接続
+
+```
+aine@centos ~/vagrant$vagrant ssh
+[vagrant@archlinux ~]$ whoami
+vagrant
+```
+
+# SSH接続情報確認
+
+```
+$vagrant ssh-config
+Host default
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/aine/vagrant/.vagrant/machines/default/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+
+```
+
+# 仮想マシンの停止
+
+```
+aine@centos ~/vagrant$vagrant halt
+==> default: Attempting graceful shutdown of VM...
+```
+
+# 仮想マシンの状態確認
+
+```
+$vagrant status
+Current machine states:
+
+default                   poweroff (virtualbox)
+
+The VM is powered off. To restart the VM, simply run `vagrant up`
+```
+
+# 仮想マシンの削除
+
+```
+$vagrant destroy
+    default: Are you sure you want to destroy the 'default' VM? [y/N] y
+==> default: Destroying VM and associated drives...
+```
+
+# 仮想マシンの状態確認
+
+```
+$vagrant status
+Current machine states:
+
+default                   not created (virtualbox)
+
+The environment has not yet been created. Run `vagrant up` to
+create the environment. If a machine is not created, only the
+default provider will be shown. So if a provider is not listed,
+then the machine is not created for that environment.
+
+```
