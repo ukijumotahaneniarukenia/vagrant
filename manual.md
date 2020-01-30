@@ -6,7 +6,7 @@
 
 - https://www.vagrantup.com/downloads.html
 
-rootユーザーで実行
+- rootユーザーで実行
 
 ```
 $cd /opt
@@ -14,7 +14,7 @@ $curl -LO https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.rpm
 $rpm -ivh vagrant_2.2.7_x86_64.rpm
 ```
 
-バージョン確認
+- バージョン確認
 ```
 $vagrant --version
 Vagrant 2.2.7
@@ -22,7 +22,7 @@ Vagrant 2.2.7
 
 # ホストマシンにvisual-boxをインストール
 
-rootユーザーで実行
+- rootユーザーで実行
 
 ```
 $yum install -y libvpx libvpx-devel libvpx-utils
@@ -36,8 +36,7 @@ $rpm -ivh VirtualBox-6.1-6.1.2_135662_el7-1.x86_64.rpm
 
 - https://app.vagrantup.com/archlinux/boxes/archlinux
 
-
-以下から検索条件を指定してisoイメージを取得する
+- 以下から検索条件を指定してisoイメージを取得する
 
 - https://app.vagrantup.com/boxes/search
 
@@ -56,69 +55,12 @@ $rpm -ivh VirtualBox-6.1-6.1.2_135662_el7-1.x86_64.rpm
 
 # 仮想マシンの作成
 
-ホストマシンで以下のコマンドを実行
+- ホストマシンで以下のコマンドを実行
+- デフォルトの名前はdefalutらしいので、名前管理したほうがよさげ。
 
 ```
 $vagrant up
 ```
-
-デフォルトの名前はdefalutらしいので、名前管理したほうがよさげ。
-
-<details><summary>開く</summary><div>
-
-```
-$vagrant up
-Bringing machine 'default' up with 'virtualbox' provider...
-==> default: Box 'archlinux/archlinux' could not be found. Attempting to find and install...
-    default: Box Provider: virtualbox
-    default: Box Version: >= 0
-==> default: Loading metadata for box 'archlinux/archlinux'
-    default: URL: https://vagrantcloud.com/archlinux/archlinux
-==> default: Adding box 'archlinux/archlinux' (v2020.01.03) for provider: virtualbox
-    default: Downloading: https://vagrantcloud.com/archlinux/boxes/archlinux/versions/2020.01.03/providers/virtualbox.box
-    default: Download redirected to host: vagrantcloud-files-production.s3.amazonaws.com
-==> default: Successfully added box 'archlinux/archlinux' (v2020.01.03) for 'virtualbox'!
-==> default: Importing base box 'archlinux/archlinux'...
-==> default: Matching MAC address for NAT networking...
-==> default: Checking if box 'archlinux/archlinux' version '2020.01.03' is up to date...
-==> default: Setting the name of the VM: vagrant_default_1580397725236_47588
-Vagrant is currently configured to create VirtualBox synced folders with
-the `SharedFoldersEnableSymlinksCreate` option enabled. If the Vagrant
-guest is not trusted, you may want to disable this option. For more
-information on this option, please refer to the VirtualBox manual:
-
-  https://www.virtualbox.org/manual/ch04.html#sharedfolders
-
-This option can be disabled globally with an environment variable:
-
-  VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
-
-or on a per folder basis within the Vagrantfile:
-
-  config.vm.synced_folder '/host/path', '/guest/path', SharedFoldersEnableSymlinksCreate: false
-==> default: Clearing any previously set network interfaces...
-==> default: Preparing network interfaces based on configuration...
-    default: Adapter 1: nat
-==> default: Forwarding ports...
-    default: 22 (guest) => 2222 (host) (adapter 1)
-==> default: Booting VM...
-==> default: Waiting for machine to boot. This may take a few minutes...
-    default: SSH address: 127.0.0.1:2222
-    default: SSH username: vagrant
-    default: SSH auth method: private key
-    default: 
-    default: Vagrant insecure key detected. Vagrant will automatically replace
-    default: this with a newly generated keypair for better security.
-    default: 
-    default: Inserting generated public key within guest...
-    default: Removing insecure key from the guest if it's present...
-    default: Key inserted! Disconnecting and reconnecting using new SSH key...
-==> default: Machine booted and ready!
-==> default: Checking for guest additions in VM...
-==> default: Mounting shared folders...
-    default: /vagrant => /home/aine/vagrant
-```
-</div></details>
 
 # isoファイルの確認
 
@@ -181,6 +123,12 @@ Host default
 ```
 aine@centos ~/vagrant$vagrant halt
 ==> default: Attempting graceful shutdown of VM...
+```
+
+# 仮想マシンの再起動
+
+```
+$vagrant reload
 ```
 
 # 仮想マシンの状態確認
