@@ -34,24 +34,15 @@ $rpm -ivh VirtualBox-6.1-6.1.2_135662_el7-1.x86_64.rpm
 
 # 仮想マシンイメージ選択
 
-- https://app.vagrantup.com/archlinux/boxes/archlinux
-
 - 以下から検索条件を指定してisoイメージを取得する
 
 - https://app.vagrantup.com/boxes/search
-
-```
-
-```
-
 
 # 再現可能なwindows環境の構築
 
 - http://tech.nitoyon.com/ja/blog/2014/02/20/vagrant-win-guest/
 ```
 ```
-
-
 
 # 仮想マシンの作成
 
