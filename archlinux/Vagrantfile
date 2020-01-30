@@ -1,6 +1,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "archlinux/archlinux"
   config.vm.define "node1" do |centos_on_vbox|
+    centos_on_vbox.vm.provision :shell, :path => "devenv.sh"
     centos_on_vbox.vm.hostname = "node1"
     centos_on_vbox.vm.provider "virtualbox" do |spec|
       spec.memory = 2048
