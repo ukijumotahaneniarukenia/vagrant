@@ -58,7 +58,8 @@ aine@centos ~/vagrant$vi /opt/vagrant/embedded/gems/2.2.7/gems/vagrant-2.2.7/plu
 $vagrant up
 ```
 
-<details><summary>
+<details><summary>開く</summary><div>
+
 ```
 Bringing machine 'default' up with 'virtualbox' provider...
 ==> default: Box 'archlinux/archlinux' could not be found. Attempting to find and install...
@@ -110,4 +111,4 @@ or on a per folder basis within the Vagrantfile:
 ==> default: Mounting shared folders...
     default: /vagrant => /home/aine/vagrant
 ```
-</summary></details>
+</div></details>
