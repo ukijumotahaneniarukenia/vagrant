@@ -42,3 +42,10 @@ $rpm -ivh VirtualBox-6.1-6.1.2_135662_el7-1.x86_64.rpm
 aine@centos ~/vagrant$vi /opt/vagrant/embedded/gems/2.2.7/gems/vagrant-2.2.7/plugins/providers/virtualbox/driver/meta.rb
 aine@centos ~/vagrant$vi /opt/vagrant/embedded/gems/2.2.7/gems/vagrant-2.2.7/plugins/providers/virtualbox/plugin.rb
 ```
+
+
+# 再現可能なwindows環境の構築
+
+- http://tech.nitoyon.com/ja/blog/2014/02/20/vagrant-win-guest/
+```
+```
