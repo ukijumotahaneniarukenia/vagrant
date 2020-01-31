@@ -8,6 +8,12 @@ x環境構築
 
 https://msyksphinz.hatenablog.com/entry/2015/11/24/020000
 
+
+Sshの機能をVagrantがラップした模様
+
+https://haiju.hatenablog.com/entry/2018/11/10/145251
+
+
 # ホストマシンにvagrantをインストール
 
 - https://www.vagrantup.com/downloads.html
