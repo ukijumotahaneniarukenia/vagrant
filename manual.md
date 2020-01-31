@@ -2,6 +2,12 @@
 
 - https://qiita.com/ozawan/items/160728f7c6b10c73b97e
 
+x環境構築
+
+ソケットファイルを共有するのではなく、sshサービスの機能を利用する
+
+https://msyksphinz.hatenablog.com/entry/2015/11/24/020000
+
 # ホストマシンにvagrantをインストール
 
 - https://www.vagrantup.com/downloads.html
