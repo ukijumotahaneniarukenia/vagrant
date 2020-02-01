@@ -238,7 +238,7 @@ $echo | pacman -S sudo | tee sudo-install.log
 
 他パッケージに所有されているか確認
 ```
-$grep -Po '(/[a-zA-Z0-9\.\-\_]+){1,}' sudo-install.log | xargs -I@ echo pacman -Qo @ | sh | tee sudo-install-err-handle.log
+$grep -Po '(/[a-zA-Z0-9\.\-\_]+){1,}' sudo-install.log | xargs -I@ echo pacman -Qo @ | sh |& tee sudo-install-err-handle.log
 ```
 
 所有しているパッケージがあれば削除しないで、強制上書き
@@ -261,7 +261,7 @@ $pacman -Rs 'tzcode'
 ```
 
 ```
-$grep -Po '(?<=エラー: )(.**)(?=を保有しているパッケージはありません)' sudo-install-err-handle.log | sort | uniq
+$grep -Po '(?<=エラー: )(.*)(?=を保有しているパッケージはありません)' sudo-install-err-handle.log | sort | uniq
 ```
 
 
