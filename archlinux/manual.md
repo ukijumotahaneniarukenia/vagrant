@@ -25,8 +25,30 @@ X11DisplayOffset 10
 X11UseLocalhost no
 ```
 
+# SSHプロセス再起動
+
+設定ファイルを修正したら、再起動
+
+```
+[vagrant@node1 ~]$ sudo systemctl restart sshd
+[vagrant@node1 ~]$ systemctl status sshd
+● sshd.service - OpenSSH Daemon
+     Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: disabled)
+     Active: active (running) since Sat 2020-02-01 10:42:56 JST; 1h 17min ago
+   Main PID: 333 (sshd)
+      Tasks: 1 (limit: 2370)
+     Memory: 8.0M
+     CGroup: /system.slice/sshd.service
+             └─333 /usr/bin/sshd -D
+
+Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+```
 
 # SSH接続
+
+- vagrantホスト側から接続
+
+- -Xオプションを忘れない
 
 ```
 aine@centos ~/vagrant$ssh vagrant@127.0.0.1 -p 2222 -i /home/aine/vagrant/archlinux/.vagrant/machines/node1/virtualbox/private_key -X
@@ -52,7 +74,6 @@ node1:11.0
 node1:12.0
 ```
 
-
 # トラシュー
 
 - 事象
@@ -74,3 +95,24 @@ aine@centos ~/vagrant/archlinux$ssh vagrant@127.0.0.1 -p 2222 -i /home/aine/vagr
 
 環境構成がいい
 - https://memo.laughk.org/2017/12/03/000013.html
+
+
+# ネットワーク設定
+
+- vagrantホスト側からvirtualboxのツールを使って確認できる
+
+```
+aine@centos ~/vagrant/archlinux$virtualbox &
+[1] 15586
+```
+
+これはVisualBoxのコマンドの一つへのリンクとなっている
+
+```
+aine@centos ~/vagrant/archlinux$ls -l /usr/bin/virtualbox
+lrwxrwxrwx. 1 root root 4  1月 30 23:21 /usr/bin/virtualbox -> VBox
+aine@centos ~/vagrant/archlinux$ls -l /usr/bin/VBox
+-rwxr-xr-x. 1 root root 4677  1月 14  2019 /usr/bin/VBox
+```
+
+![](./1.png)
