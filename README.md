@@ -1,7 +1,7 @@
 # vagrant
 
-https://qiita.com/tutuz/items/048b8f7cbfaae649d137
+- プロバイダ別に管理
 
+  - win機はvbx
 
-ubuntuホストにしてwinサーバー仮想化する
-https://www.kagoya.jp/howto/rentalserver/linuxkvm/
+  - win機以外はkvmにしようかな
