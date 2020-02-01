@@ -9,6 +9,27 @@ $pacman -S xauth
 aine@centos ~/vagrant$ssh vagrant@127.0.0.1 -p 2222 -i /home/aine/vagrant/archlinux/.vagrant/machines/node1/virtualbox/private_key -X
 ```
 
+# DISPLAY環境変数の確認
+
+- SSHでX転送有りの接続をする際、DISPLAY環境変数は端末ごとに自動で付番されるらしい
+
+あるターミナル端末
+```
+[vagrant@node1 ~]$ tty
+/dev/pts/1
+[vagrant@node1 ~]$ echo $DISPLAY
+node1:11.0
+```
+
+別のターミナル端末
+```
+[vagrant@node1 ~]$ tty
+/dev/pts/2
+[vagrant@node1 ~]$ echo $DISPLAY
+node1:12.0
+```
+
+
 # トラシュー
 
 - 事象
