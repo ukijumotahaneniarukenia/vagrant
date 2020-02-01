@@ -126,3 +126,10 @@ aine@centos ~/vagrant/archlinux$vi devenv.sh
 aine@centos ~/vagrant/archlinux$ssh vagrant@127.0.0.1 -p 2222 -i /home/aine/vagrant/archlinux/.vagrant/machines/node1/virtualbox/private_key -X
 
 ```
+
+
+- https://blog.livewing.net/install-arch-linux
+
+
+環境構成がいい
+- https://memo.laughk.org/2017/12/03/000013.html
