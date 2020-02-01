@@ -1,7 +1,30 @@
-# SSHサーバー側にxauthコマンドをインストール
+# SSHサーバー側（vagrantゲスト側）にxauthコマンドをインストール
+
 ```
-$pacman -S xauth
+[vagrant@node1 ~]$pacman -S xauth
 ```
+
+# SSHサーバー設定ファイル
+
+- 有効な設定を抽出する
+```
+[vagrant@node1 ~]$ grep -P '^[^#]' /etc/ssh/sshd_config
+AuthorizedKeysFile	.ssh/authorized_keys
+ChallengeResponseAuthentication no
+UsePAM yes
+X11Forwarding yes
+X11DisplayOffset 10
+X11UseLocalhost no
+PrintMotd no # pam does that
+Subsystem	sftp	/usr/lib/ssh/sftp-server
+```
+- X転送する上で重要な設定は以下
+```
+X11Forwarding yes
+X11DisplayOffset 10
+X11UseLocalhost no
+```
+
 
 # SSH接続
 
