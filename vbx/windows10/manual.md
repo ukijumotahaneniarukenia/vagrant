@@ -229,20 +229,13 @@ VisualBox上のWin10システムとMSYS2システムで共有するフォルダ�
 
 よく使いそうなフォルダをマウントしておく
 
-F:\msys2\etc\fstabに追記
 追記後、再起動
 ```
-# For a description of the file format, see the Users Guide
-# http://cygwin.com/cygwin-ug-net/using.html#mount-table
-
-# DO NOT REMOVE NEXT LINE. It remove cygdrive prefix from path
-none / cygdrive binary,posix=0,noacl,user 0 0
-
+cat <<EOS >>/etc/fstab
 F:\script_scratch /home/mrchi/script_scratch
 F:\script_env /home/mrchi/script_env
+EOS
 ```
-
-
 
 ## sudoコマンドのインストール
 
