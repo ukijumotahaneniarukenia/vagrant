@@ -16,6 +16,8 @@ Vagrantfileに落とし込めれば、自動化できる。
 
 スナップショットにすることができた。
 
+![](./1.png)
+
 ```
 $cd ~/VirtualBox VMs/win10/Snapshots
 $ll -lh
