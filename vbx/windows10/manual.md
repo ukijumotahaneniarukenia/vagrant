@@ -232,8 +232,8 @@ VisualBox上のWin10システムとMSYS2システムで共有するフォルダ�
 追記後、再起動
 ```
 cat <<EOS >>/etc/fstab
-F:\script_scratch /home/mrchi/script_scratch
-F:\script_env /home/mrchi/script_env
+F:\msys2\home\mrchi\script_scratch /home/mrchi/script_scratch
+F:\msys2\home\mrchi\script_env /home/mrchi/script_env
 EOS
 ```
 
