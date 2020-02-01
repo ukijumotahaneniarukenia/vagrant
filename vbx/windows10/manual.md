@@ -242,7 +242,7 @@ $grep -Po '(/[a-zA-Z0-9\.\-\_]+){1,}' sudo-install.log | xargs -I@ echo pacman -
 ```
 
 所有しているパッケージであれば削除しないで、強制上書き
-
+これやりたくない。だるすぎ。
 ```
 $grep -Po '(?<=は)(.*)(?=に)' sudo-install-err-handle.log | sort | uniq
 ```
@@ -270,7 +270,6 @@ $pacman -Rs 'tzcode'
 ```
 $pacman -S tzcode
 ```
-
 
 ## パッケージインストール時のエラーハンドリング
 
