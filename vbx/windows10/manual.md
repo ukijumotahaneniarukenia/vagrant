@@ -136,6 +136,13 @@ Include = /etc/pacman.d/mirrorlist-multilib
 EOS
 ```
 
+## パッケージのインストールとアップデート
+
+以下のコマンドを実行するとハングアップするので、ターミナルを切断し、再度実行して更新対象がなくなることを確認
+```
+$pacman -Syuu
+```
+
 ## wget有効化
 
 F:\msys2\etc\pacman.conf
@@ -184,12 +191,6 @@ $pacman -S archlinux-keyring
 SigLevel = Required DatabaseOptional
 ```
 
-## パッケージのインストールとアップデート
-
-以下のコマンドを実行するとハングアップするので、ターミナルを切断し、再度実行して更新対象がなくなることを確認
-```
-$pacman -Syuu
-```
 
 ## vimコマンドのインストール
 
