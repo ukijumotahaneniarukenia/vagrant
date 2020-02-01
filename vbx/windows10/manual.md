@@ -14,6 +14,16 @@ $virtualbox &
 
 Vagrantfileに落とし込めれば、自動化できる。
 
+スナップショットにすることができた。
+
+```
+$cd ~/VirtualBox VMs/win10/Snapshots
+$ll -lh
+合計 2.2G
+-rw-------. 1 aine aine 2.1G  2月  1 17:06 2020-02-01T08-05-45-190378000Z.sav
+-rw-------. 1 aine aine  85M  2月  1 17:06 {b7a01cc9-e975-42b6-a125-b9ba32842747}.vhd
+```
+
 # isoファイルを移動
 
 ここからダウンロード
@@ -48,3 +58,15 @@ $locate VBoxGuestAdditions.iso
 |メモリ|20MB|
 |ＣＰＵ|6CORE|
 |ディスク|200GB|
+
+# WSLのインストール
+
+- VisualBox上のwin10では安定しない
+
+# MSYS2のインストール
+
+- https://www.msys2.org/
+  - msys2-x86_64-20190524.exeをクリック
+  - OSはArchLinuxとなる
+
+
