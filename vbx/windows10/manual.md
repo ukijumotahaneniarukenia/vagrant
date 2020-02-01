@@ -205,6 +205,19 @@ SigLevel = Required DatabaseOptional
 $pacman -Syuu
 ```
 
+## vimのインストール
+
+最新が手に入るぽい。便利。
+
+```
+$pacman -S vim
+```
+
+シンボリックリンクも作成
+
+```
+$ln -fsr /usr/bin/vim /usr/bin/vi
+```
 
 # VisualStudioのインストール
 
