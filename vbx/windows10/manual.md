@@ -205,7 +205,7 @@ SigLevel = Required DatabaseOptional
 $pacman -Syuu
 ```
 
-## vimのインストール
+## vimコマンドのインストール
 
 最新が手に入るぽい。便利。
 
@@ -218,6 +218,35 @@ $pacman -S vim
 ```
 $ln -fsr /usr/bin/vim /usr/bin/vi
 ```
+
+## gitコマンドのインストール
+
+```
+$pacman -S git
+```
+
+## sudoコマンドのインストール
+
+大量にエラーでるので、個別対応
+```
+$echo | pacman -S sudo | tee sudo-install.log
+```
+
+他パッケージに所有されているか確認
+```
+$grep -Po '(/[a-zA-Z0-9]+){1,}' sudo-install.log | xargs -I@ echo pacman -Qo @ | sh | tee sudo-install-err-handle.log
+```
+
+エラー以外がヒットするか確認
+
+```
+
+```
+
+
+## パッケージインストール時のエラーハンドリング
+
+- https://wiki.archlinux.jp/index.php/Pacman#.E3.82.A2.E3.83.83.E3.83.97.E3.83.87.E3.83.BC.E3.83.88.E3.81.A7.E3.81.93.E3.82.93.E3.81.AA.E3.82.A8.E3.83.A9.E3.83.BC.E3.81.8C.E5.87.BA.E3.81.BE.E3.81.97.E3.81.9F:_.22file_exists_in_filesystem.22
 
 # VisualStudioのインストール
 
