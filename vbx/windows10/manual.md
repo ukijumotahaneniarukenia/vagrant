@@ -238,13 +238,13 @@ $echo | pacman -S sudo | tee sudo-install.log
 
 他パッケージに所有されているか確認
 ```
-$grep -Po '(/[a-zA-Z0-9]+){1,}' sudo-install.log | xargs -I@ echo pacman -Qo @ | sh | tee sudo-install-err-handle.log
+$grep -Po '(/[a-zA-Z0-9\.\-\_]+){1,}' sudo-install.log | xargs -I@ echo pacman -Qo @ | sh | tee sudo-install-err-handle.log
 ```
 
-所有しているパッケージがあれば削除
+所有しているパッケージがあれば削除しないで、強制上書き
 
 ```
-$grep -Po '(?<=は)(.****)(?=に)' sudo-install-err-handle.log | sort | uniq
+$grep -Po '(?<=は)(.*)(?=に)' sudo-install-err-handle.log | sort | uniq
 ```
 
 ```
@@ -259,6 +259,12 @@ $pacman -Rs 'tzcode'
 :: パッケージの変更を処理しています...
 (1/1) 削除 tzcode                                                                                [########################################################] 100%
 ```
+
+```
+$grep -Po '(?<=エラー: )(.**)(?=を保有しているパッケージはありません)' sudo-install-err-handle.log | sort | uniq
+```
+
+
 
 ## パッケージインストール時のエラーハンドリング
 
