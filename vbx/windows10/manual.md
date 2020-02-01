@@ -298,3 +298,56 @@ $pacman -S tzcode
 |vs-tool|実行ファイルに伴うライブラリ群|
 |vs-repo|ダウンロードしたソフト|
 |vs-scratch|作成したスクリプト|
+
+
+# 作業内容の保存
+
+msys2のファイルシステムでは大文字小文字は区別していなかった。
+
+```
+$mkdir c#
+$ls
+alg   c      cpp       dc      glibc    grep                haskell  java-ee      make   nim     perl      printf  racket     ruby  seq    sqlite  yes
+awk   c#     datamash  egison  googler  groovy              ici      java-spring  maven  node    php       python  README.md  rust  shiny  tcl
+bash  clisp  date      gcc     gradle   groovy-spring-boot  java     jq           mysql  oracle  postgres  R       reg        sed   shuf   vim
+$cd c#
+$touch manual.md
+$git add manual.md
+$git commit -m "スクラッチ"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'mrchi@DESKTOP-LG13FBD.(none)')
+
+$git config --global user.email "mrchildrenkh1008@gmail.com"
+
+$git config --global user.name "ukijumotahaneniarukenia"
+
+$git commit -m "スクラッチ"
+[master ca287fb] スクラッチ
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 c#/manual.md
+
+#ちなみにShift+Insertで貼り付けても見えないので、信じる。
+$git push -u origin master
+Username for 'https://github.com':
+Password for 'https://ukijumotahaneniarukenia@github.com':
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 6 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 326 bytes | 326.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/ukijumotahaneniarukenia/script_scratch.git
+   6b6676d..ca287fb  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+```
