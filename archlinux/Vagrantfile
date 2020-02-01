@@ -1,9 +1,8 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "archlinux/archlinux"
-  config.vm.network :forwarded_port, guest: 5901, host: 15901
   config.ssh.forward_x11 = true
   config.vm.define "node1" do |centos_on_vbox|
-    centos_on_vbox.vm.provision :shell, :path => "devenv.sh"
+#    centos_on_vbox.vm.provision :shell, :path => "devenv.sh"
     centos_on_vbox.vm.hostname = "node1"
     centos_on_vbox.vm.provider "virtualbox" do |spec|
       spec.memory = 2048
