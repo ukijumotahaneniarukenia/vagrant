@@ -151,3 +151,68 @@ aine@centos ~/vagrant/archlinux$ls -l /usr/bin/VBox
 ```
 
 ![](./1.png)
+
+
+疎通確認
+
+```
+aine@centos ~/vagrant/archlinux$ip a show eno1
+2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 00:d8:61:2c:f1:5b brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.109/24 brd 192.168.1.255 scope global noprefixroute eno1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::96c8:b118:fafa:557f/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+aine@centos ~/vagrant/archlinux$ssh vagrant@127.0.0.1 -p 2222 -i /home/aine/vagrant/archlinux/.vagrant/machines/node1/virtualbox/private_key -X
+Last login: Sat Feb  1 12:23:35 2020 from 10.0.2.2
+[vagrant@node1 ~]$ ip a show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:56:95:23 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic eth0
+       valid_lft 86021sec preferred_lft 86021sec
+    inet6 fe80::a00:27ff:fe56:9523/64 scope link 
+       valid_lft forever preferred_lft forever
+
+[vagrant@node1 ~]$ ping -c3 192.168.1.109
+PING 192.168.1.109 (192.168.1.109) 56(84) bytes of data.
+64 bytes from 192.168.1.109: icmp_seq=1 ttl=63 time=2.53 ms
+64 bytes from 192.168.1.109: icmp_seq=2 ttl=63 time=0.755 ms
+64 bytes from 192.168.1.109: icmp_seq=3 ttl=63 time=0.729 ms
+
+--- 192.168.1.109 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 0.729/1.338/2.531/0.843 ms
+[vagrant@node1 ~]$ traceroute 192.168.1.109
+traceroute to 192.168.1.109 (192.168.1.109), 30 hops max, 60 byte packets
+ 1  _gateway (10.0.2.2)  0.393 ms  0.382 ms  0.422 ms
+ 2  192.168.1.109 (192.168.1.109)  0.835 ms  0.589 ms  0.669 ms
+[vagrant@node1 ~]$ ping -c3 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=63 time=6.51 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=63 time=22.0 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=63 time=10.0 ms
+
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 6.513/12.853/21.999/6.626 ms
+[vagrant@node1 ~]$ traceroute 8.8.8.8
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  _gateway (10.0.2.2)  0.786 ms  0.350 ms  0.215 ms
+ 2  192.168.1.1 (192.168.1.1)  1.523 ms  1.487 ms  1.283 ms
+ 3  210.153.251.235 (210.153.251.235)  4.790 ms  5.823 ms  5.669 ms
+ 4  210.139.125.169 (210.139.125.169)  5.616 ms  5.565 ms  5.640 ms
+ 5  210.165.249.177 (210.165.249.177)  6.254 ms  6.219 ms  6.071 ms
+ 6  210.165.249.181 (210.165.249.181)  6.019 ms  5.812 ms  8.795 ms
+ 7  p254--504.tky-nk-acr02.sphere.ad.jp (210.153.241.113)  10.776 ms  8.691 ms  8.584 ms
+ 8  0-0-1-0--2026.tky-t4-bdr02.sphere.ad.jp (202.239.117.46)  9.354 ms  9.227 ms  23.233 ms
+ 9  72.14.205.32 (72.14.205.32)  22.664 ms  22.632 ms 210.150.215.242 (210.150.215.242)  29.486 ms
+10  * * *
+11  209.85.242.45 (209.85.242.45)  24.814 ms 209.85.248.113 (209.85.248.113)  24.763 ms dns.google (8.8.8.8)  24.632 ms
+```
