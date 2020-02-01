@@ -113,24 +113,6 @@ export NO_PROXY="localhost,127.0.0.1"
 EOS
 ```
 
-## 共有フォルダの設定
-
-VisualBox上のWin10システムとMSYS2システムで共有するフォルダを指定
-
-よく使いそうなフォルダをマウントしておく
-
-F:\msys2\etc\fstabに追記
-追記後、再起動
-```
-# For a description of the file format, see the Users Guide
-# http://cygwin.com/cygwin-ug-net/using.html#mount-table
-
-# DO NOT REMOVE NEXT LINE. It remove cygdrive prefix from path
-none / cygdrive binary,posix=0,noacl,user 0 0
-
-F:\script-scratch /script-scratch
-F:\script-env /script-env
-```
 
 ## レポジトリの登録
 
@@ -229,9 +211,38 @@ $ln -fsr /usr/bin/vim /usr/bin/vi
 $pacman -S git
 ```
 
+## 作業環境のクローン
+
+```
+$cd ~
+$git clone https://github.com/ukijumotahaneniarukenia/script_scratch.git
+$git clone https://github.com/ukijumotahaneniarukenia/script_env.git
+```
+
+## 共有フォルダの設定
+
+VisualBox上のWin10システムとMSYS2システムで共有するフォルダを指定
+
+よく使いそうなフォルダをマウントしておく
+
+F:\msys2\etc\fstabに追記
+追記後、再起動
+```
+# For a description of the file format, see the Users Guide
+# http://cygwin.com/cygwin-ug-net/using.html#mount-table
+
+# DO NOT REMOVE NEXT LINE. It remove cygdrive prefix from path
+none / cygdrive binary,posix=0,noacl,user 0 0
+
+F:\script_scratch /home/mrchi/script_scratch
+F:\script_env /home/mrchi/script_env
+```
+
+
+
 ## sudoコマンドのインストール
 
-大量にエラーでるので、個別対応
+大量にエラーでるので、個別対応しようとおもったが、やめた。
 ```
 $echo | pacman -S sudo |& tee sudo-install.log
 ```
