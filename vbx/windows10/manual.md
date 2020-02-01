@@ -169,12 +169,14 @@ F:\msys2\etc\pacman.conf
 
 - 変更前
 ```
-SigLevel = Required DatabaseOptional
+#SigLevel = Never
+SigLevel    = Required DatabaseOptional
 ```
 
 - 変更後
 ```
 SigLevel = Never
+#SigLevel    = Required DatabaseOptional
 ```
 
 - 公開鍵をインストール
@@ -188,7 +190,8 @@ $pacman -S archlinux-keyring
 次回の鍵更新でも同じ手順で実施
 
 ```
-SigLevel = Required DatabaseOptional
+#SigLevel = Never
+SigLevel    = Required DatabaseOptional
 ```
 
 
