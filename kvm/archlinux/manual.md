@@ -1,7 +1,7 @@
 # SSHサーバー側（vagrantゲスト側）にxauthコマンドをインストール
 
 ```
-[vagrant@node1 ~]$pacman -S xauth
+[vagrant@node1 ~]$pacman -S xorg-xauth
 ```
 
 # SSHサーバー設定ファイル

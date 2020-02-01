@@ -29,7 +29,7 @@ echo | pacman -S traceroute
 echo | pacman -S bridge-utils
 
 #X転送できるようにインストール
-echo | pacman -S xauth
+echo | pacman -S xorg-xauth
 
 #X環境のインストール
 #echo | pacman -S xorg-server
