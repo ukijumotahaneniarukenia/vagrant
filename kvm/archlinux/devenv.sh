@@ -19,7 +19,7 @@ echo 'root:root_pwd' | sudo chpasswd
 ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 #パッケージの更新
-echo | pacman -Syyu
+#echo | pacman -Syyu
 
 #パッケージのインストール
 echo | pacman -S net-tools

@@ -216,3 +216,29 @@ traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
 10  * * *
 11  209.85.242.45 (209.85.242.45)  24.814 ms 209.85.248.113 (209.85.248.113)  24.763 ms dns.google (8.8.8.8)  24.632 ms
 ```
+
+
+
+# libvirtプロセス管理下の仮想マシンを作成
+
+vagrantツール経由で
+
+```
+aine@centos ~/vagrant/kvm/archlinux$vagrant init archlinux/archlinux
+`Vagrantfile` already exists in this directory. Remove it before
+running `vagrant init`.
+aine@centos ~/vagrant/kvm/archlinux$mv Vagrantfile Vagrantfile-old
+aine@centos ~/vagrant/kvm/archlinux$vagrant init archlinux/archlinux
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+aine@centos ~/vagrant/kvm/archlinux$ls
+1.png  Vagrantfile  Vagrantfile-old  devenv.sh  log  manual.md
+aine@centos ~/vagrant/kvm/archlinux$vi Vagrantfile
+```
+
+```
+aine@centos ~/vagrant/kvm/archlinux$vagrant up --provider=libvirt
+
+```
