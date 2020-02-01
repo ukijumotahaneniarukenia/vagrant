@@ -1,12 +1,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "archlinux/archlinux"
-  config.vm.synced_folder '/run/udev', '/run/udev', type: 'rsync'
-  config.vm.synced_folder '/run/systemd', '/run/systemd', type: 'rsync'
-  config.vm.synced_folder '/tmp/.X11-unix', '/tmp/.X11-unix', type: 'rsync'
-  config.vm.synced_folder '/var/lib/dbus', '/var/lib/dbus', type: 'rsync'
-  config.vm.synced_folder '/var/run/dbus', '/var/run/dbus', type: 'rsync'
-  #ファイルは共有できない
-  #config.vm.synced_folder '/etc/machine-id', '/etc/machine-id', type: 'rsync'
+  config.vm.network :forwarded_port, guest: 5901, host: 15901
+  config.ssh.forward_x11 = true
   config.vm.define "node1" do |centos_on_vbox|
     centos_on_vbox.vm.provision :shell, :path => "devenv.sh"
     centos_on_vbox.vm.hostname = "node1"

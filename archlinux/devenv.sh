@@ -15,6 +15,9 @@ chsh -s /bin/bash kuraine
 
 echo 'root:root_pwd' | sudo chpasswd
 
+#タイムゾーンの設定
+ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
 #パッケージの更新
 echo | pacman -Syyu
 
@@ -24,3 +27,13 @@ echo | pacman -S lsof
 echo | pacman -S psmisc
 echo | pacman -S traceroute
 echo | pacman -S bridge-utils
+
+#X環境のインストール
+echo | pacman -S xorg-server
+echo | pacman -S xterm
+
+#ディスプレイドライバのインストール
+echo | pacman -S xf86-video-intel
+
+#ディスプレイマネージャのインストール
+echo | pacman -S lightdm lightdm-gtk-greeter
