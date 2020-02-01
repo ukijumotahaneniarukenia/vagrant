@@ -96,6 +96,41 @@ aine@centos ~/vagrant/archlinux$ssh vagrant@127.0.0.1 -p 2222 -i /home/aine/vagr
 環境構成がいい
 - https://memo.laughk.org/2017/12/03/000013.html
 
+# キーボード設定
+
+- https://qiita.com/j8takagi/items/1ff632ce15d02b595718
+
+デフォルトの状態
+```
+[vagrant@node1 ~]$ localectl
+   System Locale: LANG=en_US.UTF-8
+       VC Keymap: us
+      X11 Layout: us
+       X11 Model: pc105+inet
+     X11 Options: terminate:ctrl_alt_bksp
+```
+
+利用可能なキー配列
+```
+[vagrant@node1 ~]$ localectl list-keymaps | grep jp
+jp106
+```
+
+日本語キーボードに設定
+
+```
+[vagrant@node1 ~]$ sudo localectl set-keymap jp106
+```
+
+変更後の状態
+```
+[vagrant@node1 ~]$ localectl
+   System Locale: LANG=en_US.UTF-8
+       VC Keymap: jp106
+      X11 Layout: jp
+       X11 Model: jp106
+     X11 Options: terminate:ctrl_alt_bksp
+```
 
 # ネットワーク設定
 

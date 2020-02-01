@@ -28,6 +28,9 @@ echo | pacman -S psmisc
 echo | pacman -S traceroute
 echo | pacman -S bridge-utils
 
+#X転送できるようにインストール
+echo | pacman -S xauth
+
 #X環境のインストール
 echo | pacman -S xorg-server
 echo | pacman -S xterm
@@ -36,4 +39,11 @@ echo | pacman -S xterm
 echo | pacman -S xf86-video-intel
 
 #ディスプレイマネージャのインストール
-echo | pacman -S lightdm lightdm-gtk-greeter
+echo | pacman -S lightdm
+echo | pacman -S lightdm-gtk-greeter
+#LightDM の自動起動設定
+systemctl enable lightdm
+
+#デスクトップ環境をインストール
+echo | pacman -S xfce4
+echo | pacman -S xfce4-goodies
