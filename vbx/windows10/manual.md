@@ -14,7 +14,7 @@ aine@centos ~/vagrant/vbx/windows10$virtualbox &
 ここからダウンロード
 - https://www.microsoft.com/ja-jp/software-download/windows10ISO
 
-プロダクトキーはwin7のやつを使用
+プロダクトキーはwin7のやつを利用できるらしい
 
 ```
 aine@centos ~/VirtualBox VMs/win10$cp ~/Downloads/Win10_1909_Japanese_x64.iso .
@@ -29,4 +29,16 @@ aine@centos ~/VirtualBox VMs/win10$ll
 ```
 
 # フルスクリーン表示
+
 - http://exlight.net/linux/vbox_guest_additions/
+
+```
+aine@centos ~/vagrant/vbx/windows10$locate VBoxGuestAdditions.iso
+/usr/share/virtualbox/VBoxGuestAdditions.iso
+```
+
+# 仮想マシンのメモリ・CPU増やす
+
+- 仮想マシンの電源を落としたあとに行う
+
+  - https://pc-karuma.net/virtualbox-change-memory-size/
