@@ -71,4 +71,132 @@ $locate VBoxGuestAdditions.iso
   - msys2-x86_64-20190524.exeをクリック
   - OSはArchLinuxとなる
 
+## 参考文献
 
+- https://text.baldanders.info/remark/2016/03/gcc-msys2-1/
+- https://text.baldanders.info/remark/2016/03/gcc-msys2-2/
+- https://qiita.com/TsutomuNakamura/items/b60518f8788e5e998744
+- http://flow-developers.hatenablog.com/entry/2018/05/15/234918
+- https://nagayasu-shinya.com/msys2-pacman-db-update-err/
+- https://qiita.com/k-takata/items/fcb2f1f9ca564fd78597
+- https://qiita.com/k-takata/items/373ec7f23d5d7541f982
+- https://qiita.com/tukiyo3/items/4ac825c5f34ec88c405f
+- https://qiita.com/yuukiyouki/items/a84c14240429e453428b
+- https://qiita.com/Ted-HM/items/4f2feb9fdacb6c72083c
+- https://qiita.com/MoriokaReimen/items/dbe1448ce6c0f80a6ac1
+
+## rootユーザーの設定
+
+
+
+## プロキシの設定
+
+あれば
+
+F:\msys2\etc\profile.d\proxy.shを作成
+```
+cat <<EOS >F:\msys2\etc\profile.d\proxy.sh
+export http_proxy=http://proxyserver.domain:port
+export HTTP_PROXY=http://proxyserver.domain:port
+export https_proxy=https://proxyserver.domain:port
+export HTTPS_PROXY=https://proxyserver.domain:port
+export no_proxy="localhost,127.0.0.1"
+export NO_PROXY="localhost,127.0.0.1"
+EOS
+```
+
+## 共有フォルダの設定
+
+VisualBox上のWin10システムとMSYS2システムで共有するフォルダを指定
+
+よく使いそうなフォルダをマウントしておく
+
+F:\msys2\etc\fstabに追記
+追記後、再起動
+```
+# For a description of the file format, see the Users Guide
+# http://cygwin.com/cygwin-ug-net/using.html#mount-table
+
+# DO NOT REMOVE NEXT LINE. It remove cygdrive prefix from path
+none / cygdrive binary,posix=0,noacl,user 0 0
+
+F:\script-scratch /script-scratch
+F:\script-env /script-env
+```
+
+## レポジトリの登録
+
+```
+echo 'Server = https://mirrors.kernel.org/archlinux/community/os/$arch' >/etc/pacman.d/mirrorlist-community
+echo 'Server = https://mirrors.kernel.org/archlinux/core/os/$arch' >/etc/pacman.d/mirrorlist-core
+echo 'Server = https://mirrors.kernel.org/archlinux/extra/os/$arch' >/etc/pacman.d/mirrorlist-extra
+echo 'Server = https://mirrors.kernel.org/archlinux/multilib/os/$arch' >/etc/pacman.d/mirrorlist-multilib
+```
+
+```
+cat <<EOS >/etc/pacman.conf
+[community]
+Include = /etc/pacman.d/mirrorlist-community
+[core]
+Include = /etc/pacman.d/mirrorlist-core
+[extra]
+Include = /etc/pacman.d/mirrorlist-extra
+[multilib]
+Include = /etc/pacman.d/mirrorlist-multilib
+EOS
+```
+
+## wget有効化
+
+F:\msys2\etc\pacman.conf
+
+- 変更前
+
+```
+#XferCommand = /usr/bin/curl -C - -f %u > %o
+#XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+```
+
+- 変更後
+
+```
+#XferCommand = /usr/bin/curl -C - -f %u > %o
+XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
+```
+
+## 信頼できる公開鍵のインストールのため、一度だけ穴あける
+
+作業進まないので、しょうがない
+
+F:\msys2\etc\pacman.conf
+
+- 変更前
+```
+SigLevel = Required DatabaseOptional
+```
+
+
+- 変更後
+```
+SigLevel = Never
+```
+
+- 公開鍵をインストール
+
+```
+$pacman -S archlinux-keyring
+```
+
+- 変更前に戻す
+
+次回の鍵更新でも同じ手順で実施
+
+```
+SigLevel = Required DatabaseOptional
+```
+
+## パッケージのインストールとアップデート
+
+```
+$pacman -Syuu
+```
