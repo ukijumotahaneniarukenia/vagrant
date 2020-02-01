@@ -134,7 +134,7 @@ echo 'Server = https://mirrors.kernel.org/archlinux/multilib/os/$arch' >/etc/pac
 ```
 
 ```
-cat <<EOS >/etc/pacman.conf
+cat <<EOS >>/etc/pacman.conf
 [community]
 Include = /etc/pacman.d/mirrorlist-community
 [core]
