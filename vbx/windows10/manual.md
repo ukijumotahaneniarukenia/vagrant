@@ -179,7 +179,6 @@ F:\msys2\etc\pacman.conf
 SigLevel = Required DatabaseOptional
 ```
 
-
 - 変更後
 ```
 SigLevel = Never
@@ -201,6 +200,24 @@ SigLevel = Required DatabaseOptional
 
 ## パッケージのインストールとアップデート
 
+以下のコマンドを実行するとハングアップするので、ターミナルを切断し、再度実行して更新対象がなくなることを確認
 ```
 $pacman -Syuu
 ```
+
+
+# VisualStudioのインストール
+
+ここからダウンロード
+- https://visualstudio.microsoft.com/ja/thank-you-downloading-visual-studio/?sku=Community&rel=16
+
+インストーラーで参照できるように、予めkeyに記載のフォルダを作成しておく
+
+アプリ起動する際はvs-scratchフォルダをマウントして使用
+
+|key|value|
+|:-:|:-:|
+|vs-edit|実行ファイル|
+|vs-tool|実行ファイルに伴うライブラリ群|
+|vs-repo|ダウンロードしたソフト|
+|vs-scratch|作成したスクリプト|
