@@ -221,6 +221,8 @@ traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
 
 # libvirtプロセス管理下の仮想マシンを作成
 
+- https://kazuhira-r.hatenablog.com/entry/2019/10/03/003753
+
 vagrantツール経由で
 
 ```
