@@ -1,5 +1,9 @@
 # 参考文献
 
+win10の環境構築参考になる
+
+- http://wakita.github.io/gldojo/sb0/msys2/
+
 - https://qiita.com/hinataysi29734/items/d4e48ca673bad2f5ea03
 
 # virtualboxコマンドで設定
