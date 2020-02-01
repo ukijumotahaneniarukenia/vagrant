@@ -22,6 +22,10 @@ Vagrantfileに落とし込めれば、自動化できる。
 
 ![](./1.png)
 
+スナップショットの復元もできるらしい。
+
+- https://pc-karuma.net/virtualbox-snapshot/
+
 ```
 $cd ~/VirtualBox VMs/win10/Snapshots
 $ll -lh
@@ -91,7 +95,7 @@ $locate VBoxGuestAdditions.iso
 
 ## rootユーザーの設定
 
-
+どうやらログインユーザーはroot権限を既に持っている
 
 ## プロキシの設定
 
@@ -237,12 +241,24 @@ $echo | pacman -S sudo | tee sudo-install.log
 $grep -Po '(/[a-zA-Z0-9]+){1,}' sudo-install.log | xargs -I@ echo pacman -Qo @ | sh | tee sudo-install-err-handle.log
 ```
 
-エラー以外がヒットするか確認
+所有しているパッケージがあれば削除
 
+```
+$grep -Po '(?<=は)(.****)(?=に)' sudo-install-err-handle.log | sort | uniq
 ```
 
 ```
+$pacman -Rs 'tzcode'
+依存関係を確認しています...
 
+パッケージ (1) tzcode-2019.a-1
+
+合計削除容量:  1.81 MiB
+
+:: 以上のパッケージを削除しますか？ [Y/n]
+:: パッケージの変更を処理しています...
+(1/1) 削除 tzcode                                                                                [########################################################] 100%
+```
 
 ## パッケージインストール時のエラーハンドリング
 
